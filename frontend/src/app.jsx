@@ -9,7 +9,7 @@ import {
 // ==========================================
 // CONFIGURATION
 // ==========================================
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = (typeof process !== 'undefined' && process.env.REACT_APP_BACKEND_URL) || 'http://localhost:3000';
 
 // ==========================================
 // SUB-COMPONENTS
@@ -200,6 +200,8 @@ const ExamView = ({ socket, examId, examData, onSubmit }) => {
   // Secure Server Timer
   useEffect(() => {
     const updateTimer = () => {
+      if (!examData.serverEndTime) return;
+      
       const now = new Date().getTime();
       const end = new Date(examData.serverEndTime).getTime();
       const distance = end - now;
