@@ -9,7 +9,7 @@ import {
 // ==========================================
 // CONFIGURATION
 // ==========================================
-const BACKEND_URL = (typeof process !== 'undefined' && process.env.REACT_APP_BACKEND_URL) || 'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
 // ==========================================
 // SUB-COMPONENTS
